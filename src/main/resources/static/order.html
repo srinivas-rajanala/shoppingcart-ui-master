@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>ShoppingCart</title>
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+          crossorigin="anonymous"/>
+    <style>
+        body {
+            padding-top: 50px;
+        }
+    </style>
+
+</head>
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-header">
+    
+        <a class="navbar-brand" href="#">ShoppingCart</a>
+    </div>
+    <div id="navbar" class="collapse navbar-collapse">
+        <ul class="nav navbar-nav">
+            <li class="active"><a href="http://localhost:8080/ui/">Home</a></li>
+        </ul>
+    </div>
+</nav>
+<div class="dropdown">
+  <button class="dropbtn" v-on:click= "searchValue">Electronics</button>
+  <div class="dropdown-content">
+    <a href="#">Mobiles</a>
+     <a href="#">Laptop</a>
+  </div>
+</div>
+<div class="dropdown">
+  <button class="dropbtn"  v-on:click= "searchValue" >Home & Furniture</button>
+  <div class="dropdown-content">
+    <a href="#">Refrigerator</a>
+  </div>
+</div>
+
+</br>
+<div class="container" id="app">
+    <div class="row">
+       
+        <div class="col-md-6 col-md-offset-3">
+            <p>Get All Order Details : 
+            </p>
+            <button type="button" id="searchAll" class="btn btn-warning" style="display:none"
+                    v-on:click="searchAllOrders">Get All Orders</button>
+            <pre style="display:none">{{getallorders}}</pre>
+            <div id="table2" style="display: none;">
+            <table style="width:100%;margin-top: 49px;">
+               <tr>
+                 <th><b>Customer Email</th><th><b>Customer Address</th><th><b>Items</th>
+               </tr>
+               
+                
+               <tr v-for="getorders in getallorders"><td>{{getorders.customerEmail}}</td><td>{{getorders.customerAddress}}</td><td>{{getorders.items}}</td>
+               </tr>
+                 </div>
+            </table>
+            </div>
+        </div>
+        
+    </div>
+
+</div>
+<script src="jquery.min.js"></script>
+<script src="vue.min.js"></script>
+<script type="text/javascript" src="app.js">
+</script>
+<script>
+jQuery(function(){
+   jQuery('#searchAll').click();
+});
+</script>
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+th {
+    text-align: left;
+    background-color: cadetblue;
+}
+.dropbtn {
+  background-color: darkcyan;
+  color: white;
+  padding: 5px;
+  font-size: 12px;
+  border: none;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {background-color: #ddd;}
+
+.dropdown:hover .dropdown-content {display: block;}
+
+.dropdown:hover .dropbtn {background-color: #3e8e41;}
+</style>
+</body>
+</html>
